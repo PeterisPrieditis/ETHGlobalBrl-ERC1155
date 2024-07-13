@@ -4,10 +4,10 @@
 
 Foundry consists of:
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
+- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
+- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
+- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
 
 ## Documentation
 
@@ -64,3 +64,22 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+
+halmos --contract Counter --config test/halmos.toml
+FOUNDRY_PROFILE=halmos halmos --contract Counter --config test/halmos.toml
+
+halmos --contract Counter --function "testHalmos"
+halmos --contract CounterTestHalmos --function "testHalmos"
+halmos --function "testHalmos"
+
+halmos --config test/halmos2.toml
+halmos --config test/halmos.toml
+
+---
+
+halmos --contract CounterTestHalmos --function "testHalmos" --debug
+
+---
+
+docker run -it -d --name devops199 --volume=${PWD}:/data whitehat-machine
+halmos --contract CounterTestHalmos --function "testHalmos" --root /data
